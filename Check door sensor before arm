@@ -1,0 +1,10 @@
+-- Put this code in the startup lua.
+function checkVSwitch(81)
+--local dID = 32           -- Device ID of your VirtualSwitch
+local allow = true       -- true runs scene if switch is on, false blocks it
+local status = luup.variable_get("urn:upnp-org:serviceId:VSwitch1","Status",dID)
+return ((status == "1") == allow)
+end
+
+-- put this next line in the scene
+return checkVSwitch(246)and checkVSwitch(246) and checkVSwitch(246)
